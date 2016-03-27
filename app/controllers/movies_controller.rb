@@ -20,7 +20,7 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to @movie, notice: 'Movie was successfully created.'
     else
-      render :new
+      render :new 
     end
   end
 
@@ -28,6 +28,7 @@ class MoviesController < ApplicationController
     if @movie.update(movie_params)
       redirect_to @movie, notice: 'Movie was successfully updated.'
     else
+      @movie = Movie.find(params[:id])
       render :edit
     end
   end
@@ -38,7 +39,6 @@ class MoviesController < ApplicationController
   end
 
   private
-
     def set_movie
       @movie = Movie.find(params[:id])
     end

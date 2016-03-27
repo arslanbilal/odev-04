@@ -1,29 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
+<%= content_for :title do %>
   <%= @movie.title %>
-</p>
+<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @movie.description %>
-</p>
+<%= render "/shared/movies_button" %>
 
-<p>
-  <strong>Director:</strong>
-  <%= @movie.director %>
-</p>
+<h3 style="color:brown">Movie Details <%= render "/shared/edit_button", movie: @movie %> <%= render "/shared/delete_button", movie: @movie %>  </h3>
 
-<p>
-  <strong>Country:</strong>
-  <%= @movie.country %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @movie.date %>
-</p>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<ul class="list-group">
+    <li class="list-group-item list-group-item active"> <%= @movie.title %> </li>
+    <li class="list-group-item"><b>Description:</b> <%= @movie.description %> </li>
+    <li class="list-group-item"><b>Director:</b> <%= @movie.director %> </li>
+    <li class="list-group-item"><b>Country:</b> <%= @movie.country %> </li>
+  <li class="list-group-item"><b>Year:</b> <%= @movie.date %> </li>  
+</ul>

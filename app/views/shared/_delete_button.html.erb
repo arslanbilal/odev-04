@@ -1,0 +1,1 @@
+<%= link_to '<i class="glyphicon glyphicon-remove"></i> Delete'.html_safe, movie_path(movie), method: :delete, data: {confirm: "Are you sure to delete " + movie.title + "?"} , class: "btn btn-danger btn-sm" %>

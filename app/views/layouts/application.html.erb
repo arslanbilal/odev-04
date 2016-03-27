@@ -1,18 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Filmci</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+  		<title><%= yield :title %></title>
+  		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  		<%= csrf_meta_tags %>
+  		<meta charset="utf-8">
+	</head>
+	<body>
+	    <nav class="navbar navbar-inverse navbar-fixed-top">
+	      <div class="container">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	            <span class="sr-only"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	          <a class="navbar-brand" href="/">Movie Finder</a>
+	        </div>
+	        <div id="navbar" class="collapse navbar-collapse">
+	          <ul class="nav navbar-nav">
+	            <li><%= link_to 'Home', root_path %></li>
+	            <li><%= link_to 'About', about_path %></li>
+	            <li><%= link_to 'Contact', contact_path %></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </nav>
 
-<%= link_to "Anasayfa", root_path %> | <%= link_to "Hakkkında", about_path %> | <%= link_to "İletişim", contact_path %> 
-
-<br />
-
-<%= yield %>
-
-</body>
+	    <div style='margin-top:60px;' class="container">
+	    	<%= flash[:notice] %>
+			<%= yield %>
+      </div>
+  </body>
 </html>
