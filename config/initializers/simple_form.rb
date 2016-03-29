@@ -5,6 +5,9 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
+  
+  config.input_mappings = { /country/ => :string }
+
   config.wrappers :default, class: :input,
     hint_class: :field_with_hint, error_class: :field_with_errors do |b|
     ## Extensions enabled by default
@@ -139,7 +142,7 @@ SimpleForm.setup do |config|
   # config.time_zone_priority = nil
 
   # Default priority for country inputs.
-  config.country_priority = nil
+  # config.country_priority = nil
   
   # When false, do not use translations for labels.
   # config.translate_labels = true
