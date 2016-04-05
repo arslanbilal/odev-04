@@ -1,25 +1,10 @@
 <%= content_for :title do %>
-  Movie Finder
+  Movies
 <% end %>
-<h3 style="color:brown">Movies <%= link_to '<i class="glyphicon glyphicon-plus"></i> Add Movie'.html_safe, new_movie_path, class: "btn btn-default btn-sm" %> </h3>
+<h3 style="color:brown">Movies
+  <% if current_user %>
+    <%= link_to '<i class="glyphicon glyphicon-plus"></i> Add Movie'.html_safe, new_movie_path, class: "btn btn-default btn-sm" %>
+  <% end %> 
+</h3>
 
-<table class="table table-bordered">
-  <tr>
-    <th>No</th>
-    <th>Name</th>
-    <th>Year</th>
-    <th>Director</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-  <% @movies.each_with_index do |movie, index| %>
-  <tr>
-    <td> <%= (index + 1) %> </td>
-    <td> <%= link_to movie.title, movie%> </td>
-    <td> <%= movie.date %> </td>
-    <td> <%= movie.director %> </td>
-    <td> <%= link_to '<i class="glyphicon glyphicon-edit"></i> Edit'.html_safe, edit_movie_path(movie), class: "btn btn-primary btn-sm" %> </td>
-    <td> <%= link_to '<i class="glyphicon glyphicon-remove"></i> Delete'.html_safe, movie_path(movie), method: :delete, data: {confirm: "Are you sure to delete " + movie.title + "?"} , class: "btn btn-danger btn-sm" %> </td>
-  </tr>
-  <% end %>
-</table>
+<%= render "/shared/movies_list", movies: @movies, is_ratable: true %>

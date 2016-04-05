@@ -1,0 +1,9 @@
+<%= content_for :title do %>
+  <%= current_user.email %>
+<% end %>
+
+<%= render "/shared/movies_button" %>
+
+<h3 style="color:brown">User Rated Movies</h3>
+
+<%= render "/shared/movies_list", movies: @movies, is_ratable: false %>

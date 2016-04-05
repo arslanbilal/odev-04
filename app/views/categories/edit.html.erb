@@ -1,0 +1,9 @@
+<%= content_for :title do %>
+	Edit: <%= @category.name %>
+<% end %>
+
+<%= render "/shared/categories_button" %>
+
+<h3 style="color:brown">Edit: <i><%= @category.name %></i>  <%= render "/shared/delete_category_button", category: @category %></h3>
+
+<%= render 'category_form' %>

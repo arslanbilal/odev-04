@@ -1,0 +1,21 @@
+<%= content_for :title do %>
+  Categories
+<% end %>
+<h3 style="color:brown">Categories
+  <% if current_user %>
+    <%= link_to '<i class="glyphicon glyphicon-plus"></i> Add Category'.html_safe, new_category_path, class: "btn btn-default btn-sm" %>
+  <% end %> 
+</h3>
+
+<table class="table table-bordered">
+  <tr>
+    <th>No</th>
+    <th>Name</th>
+  </tr>
+  <% @categories.each_with_index do |category, index| %>
+  <tr>
+    <td> <%= (index + 1) %> </td>
+    <td> <b><%= link_to category.name, category %></b> </td>
+  </tr>
+  <% end %>
+</table>

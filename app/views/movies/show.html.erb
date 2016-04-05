@@ -4,12 +4,28 @@
 
 <%= render "/shared/movies_button" %>
 
-<h3 style="color:brown">Movie Details <%= render "/shared/edit_button", movie: @movie %> <%= render "/shared/delete_button", movie: @movie %>  </h3>
+<h3 style="color:brown">Movie Details
+  <% if current_user %>
+  	<%= render "/shared/edit_movie_button", movie: @movie %> 
+	 <%= render "/shared/delete_movie_button", movie: @movie %>
+  <% end %>
+</h3>
 
 <ul class="list-group">
-    <li class="list-group-item list-group-item active"> <%= @movie.title %> </li>
-    <li class="list-group-item"><b>Description:</b> <%= @movie.description %> </li>
-    <li class="list-group-item"><b>Director:</b> <%= @movie.director %> </li>
-    <li class="list-group-item"><b>Country:</b> <%= @movie.country %> </li>
-  <li class="list-group-item"><b>Year:</b> <%= @movie.date %> </li>  
+  <li class="list-group-item list-group-item active"> <%= @movie.title %> </li>
+  <li class="list-group-item"><b>Description:</b> <%= @movie.description %> </li>
+  <li class="list-group-item"><b>Director:</b> <%= @movie.director %> </li>
+  <li class="list-group-item"><b>Country:</b> <%= @movie.country %> </li>
+  <li class="list-group-item"><b>Year:</b> <%= @movie.date %> </li>
+  <li class="list-group-item"><b>Categories:</b>
+    <% @movie.categories.each do |category|%>
+      <%= link_to category.name, category_path(category) %>
+      <% if @movie.categories.last != category %>
+        -
+      <% end %>
+    <% end %>
+  </li>
+  <li class="list-group-item"><b>Rating:</b>
+    <%= @movie.ratings.sum(:point) %>
+  </li>
 </ul>

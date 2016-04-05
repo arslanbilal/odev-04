@@ -1,0 +1,6 @@
+<%= content_for :title do %>
+  Movie Finder
+<% end %>
+<h3 style="color:brown">Top 10 Movies</h3>
+
+<%= render "/shared/movies_list", movies: @movies, is_ratable: false %>

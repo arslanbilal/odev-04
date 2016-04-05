@@ -1,0 +1,27 @@
+<table class="table table-bordered">
+  <tr>
+    <th>No</th>
+    <th>Name</th>
+    <th>Year</th>
+    <th>Director</th>
+    <th>Rating</th>
+    <% if current_user and is_ratable %>
+      <th>Rating</th>
+    <% end %>
+  </tr>
+  <% movies.each_with_index do |movie, index| %>
+  <tr>
+    <td> <%= (index + 1) %> </td>
+    <td> <b><%= link_to movie.title, movie %></b> </td>
+    <td> <%= movie.date %> </td>
+    <td> <%= movie.director %> </td>
+    <td><b><%= movie.ratings.sum(:point) %></b></td>
+    <% if current_user and is_ratable %>
+      <td>
+        <%= link_to '<i class="glyphicon glyphicon-plus"></i>'.html_safe, root_path, class: "btn btn-success btn-xs" %>
+        <%= link_to '<i class="glyphicon glyphicon-minus"></i>'.html_safe, root_path, class: "btn btn-danger btn-xs" %>
+      </td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>

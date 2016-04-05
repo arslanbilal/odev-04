@@ -11,6 +11,7 @@ class MoviesController < ApplicationController
 
   def new
     @movie = Movie.new
+    @categories = Category.all
   end
 
   def edit
@@ -21,7 +22,8 @@ class MoviesController < ApplicationController
     if @movie.save
       redirect_to @movie, notice: 'Movie was successfully created.'
     else
-      render :new 
+      @categories = Category.all
+      render :new
     end
   end
 
@@ -36,7 +38,7 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
-    redirect_to movies_url, notice: 'Movie was successfully destroyed.'
+    redirect_to movies_url, notice: 'Movie was successfully deleted.'
   end
 
   private
@@ -45,6 +47,6 @@ class MoviesController < ApplicationController
     end
 
     def movie_params
-      params.require(:movie).permit(:title, :description, :director, :country, :date)
+      params.require(:movie).permit(:title, :description, :director, :country, :date, category_ids: [])
     end
 end

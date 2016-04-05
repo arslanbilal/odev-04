@@ -1,0 +1,32 @@
+<%= content_for :title do %>
+  <%= @category.name %>
+<% end %>
+
+<%= render "/shared/categories_button" %>
+
+<h3 style="color:brown">Category Details
+  <% if current_user %>
+  	<%= render "/shared/edit_category_button", category: @category %> 
+	  <%= render "/shared/delete_category_button", category: @category %>
+  <% end %>
+</h3>
+
+<ul class="list-group">
+  <li class="list-group-item list-group-item active"> <%= @category.name %> </li>
+</ul>
+<table class="table table-bordered">
+  <tr>
+    <th>No</th>
+    <th>Name</th>
+    <th>Year</th>
+    <th>Director</th>
+  </tr>
+  <% @movies.each_with_index do |movie, index| %>
+  <tr>
+    <td> <%= (index + 1) %> </td>
+    <td> <b><%= link_to movie.title, movie %></b> </td>
+    <td> <%= movie.date %> </td>
+    <td> <%= movie.director %> </td>
+  </tr>
+  <% end %>
+</table>

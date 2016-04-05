@@ -4,5 +4,6 @@
   <%= m.input :director, placeholder: 'Movie Director' %>
   <%= m.input :country, placeholder: 'Country'%>
   <%= m.input :date, placeholder: '2016', error: 'Date value must be a year' %>
+  <%= m.association :categories, as: :check_boxes%>
   <%= m.button :submit %>
 <% end %>

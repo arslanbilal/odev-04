@@ -4,6 +4,6 @@
 
 <%= render "/shared/movies_button" %>
 
-<h3 style="color:brown">Edit: <i><%= @movie.title %></i>  <%= render "/shared/delete_button", movie: @movie %></h3>
+<h3 style="color:brown">Edit: <i><%= @movie.title %></i>  <%= render "/shared/delete_movie_button", movie: @movie %></h3>
 
-<%= render 'form' %>
+<%= render 'movie_form' %>
